@@ -1,10 +1,6 @@
 package com.example.appjo.moviebox;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-
-import android.content.Context;
-import androidx.test.core.app.ApplicationProvider;
 import static com.google.common.truth.Truth.assertThat;
 
 
@@ -18,7 +14,6 @@ import static org.junit.Assert.*;
  */
 
 public class ExampleUnitTest {
-    //private Context context = ApplicationProvider.getApplicationContext();
     @Test
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);

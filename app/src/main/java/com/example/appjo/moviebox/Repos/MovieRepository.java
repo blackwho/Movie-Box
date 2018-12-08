@@ -30,7 +30,9 @@ public class MovieRepository {
     private RequestQueue mRequestQueue;
     private static final String BASE_URL = "https://api.themoviedb.org/3/search/movie?api_key=4d68386fdfbb718a8c36cc1c1053c82e&language=en-US";
 
-
+    public MovieRepository(Context context){
+        mRequestQueue = VolleySingleton.getInstance(context).getRequestQueue();
+    }
     public MovieRepository(Application application){
         mRequestQueue = VolleySingleton.getInstance(application.getApplicationContext()).getRequestQueue();
         context = application.getApplicationContext();
@@ -43,6 +45,12 @@ public class MovieRepository {
         return mInstance;
     }
 
+    public static MovieRepository getInstanceTest(Context context){
+        if(mInstance == null){
+            mInstance = new MovieRepository(context);
+        }
+        return mInstance;
+    }
     public LiveData<List<MovieModel>> getMovies(String url){
         final MutableLiveData<List<MovieModel>> movies= new MutableLiveData<>();
         GsonRequest mJsonObjectRequest = new GsonRequest(Request.Method.GET,
